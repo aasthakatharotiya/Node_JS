@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Welcome To Express JS</h1>
+        <br>
+
+        <form action="/addData" method="post">
+            <input type="text" placeholder="Enter Your Name..." name="name">
+            <input type="text" placeholder="Enter Your Subject..." name="subject">
+            <input type="text" placeholder="Enter Your City..." name="City">
+            <button type="submit">Add Data</button>
+        </form>
+        <br>
+
+        <table border="1px" width="50%">
+            <thead>
+                <tr>
+                    <th style="font-size: 23px;"><u>ID</u></th>
+                    <th style="font-size: 23px;"><u>Name</u></th>
+                    <th style="font-size: 23px;"><u>Subject</u></th>
+                    <th colspan="2" style="font-size: 23px;">action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% student.map((e, i) => { %>
+                    <tr>
+                        <td style="text-align: center; height: 40px;"> <%= e.id %> </td>
+                        <td style="text-align: center; height: 40px;"> <%= e.name %> </td>
+                        <td style="text-align: center; height: 40px;"> <%= e.subject %> </td>
+                        <td style="text-align: center; height: 40px;">
+                            <button>
+                                <a href="/editData/<%=e.id%>">Edit</a>
+                            </button>
+                        </td>
+                        <td style="text-align: center; height: 40px;">
+                            <button>
+                                <a href="/deleteData?id=<%=e.id%>">Delete</a>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </center>
+</body>
+</html>
