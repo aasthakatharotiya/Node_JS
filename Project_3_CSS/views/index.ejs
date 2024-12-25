@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css"
+        integrity="sha512-dUOcWaHA4sUKJgO7lxAQ0ugZiWjiDraYNeNJeRKGOIpEq4vroj1DpKcS3jP0K4Js4v6bXk31AAxAxaYt3Oi9xw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Dancing+Script&family=Great+Vibes&family=Kalam:wght@300;400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <center>
+        <header>
+            <div class="container head pb-3">
+                <div class="row">
+                    <div class="col logo">
+                        <img src="photos/logo_white.png" alt="">
+                    </div>
+                    <div class="col nav float-end">
+                        <a class="home_css" href="#home">Home</a>
+                        <a class="home_css_not1" href="#about">About Us</a>
+                        <a class="home_css_not2" href="#order">Order</a>
+                        <a class="home_css_not3" href="#work">Works</a>
+                        <a class="home_css_not6" href="#service">Service</a>
+                        <a class="home_css_not4" href="#gallery">Gallery</a>
+                        <a class="home_css_not5" href="#contact">Contact Us</a>
+                    </div>
+                    <div class="col off">
+                        <button class="btn border-none mt-4 fs-1 float-end text-white" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                        </button>
+
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                            aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel">
+                                    Information
+                                </h5>
+                                <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <a class="home_css" href="#home">Home</a>
+                                <a class="home_css_not1" href="#about">About Us</a>
+                                <a class="home_css_not2" href="#order">Order</a>
+                                <a class="home_css_not3" href="#work">Works</a>
+                                <a class="home_css_not6" href="#service">Service</a>
+                                <a class="home_css_not4" href="#gallery">Gallery</a>
+                                <a class="home_css_not5" href="#contact">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="home"></div> <!-- Home Div -->
+
+        <div id="particles-js">
+
+        </div>
+        <div class="count-particles">
+            <div class="head_img">
+                <img src="photos/slide-logo.png" alt="">
+            </div>
+        </div>
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+
+        <div id="about"></div> <!-- About Us Div -->
+
+        <div class="container">
+            <div class="row">
+                <div class="mt-5 ps-4 pe-4 col col-12 col-lg-6 col-sm-12 sweet">
+                    <img class="design mt-5" src="photos/design_1.png" alt="">
+                    <h1>
+                        Christmas Sweets Homemade
+                    </h1>
+                    <p class="mt-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et ligula vitae est eleifend dictum
+                        a at risus. <u>Vivamus elementum</u> libero et quam cursus vehicula etiam ac nisi vitae dolor
+                        facilisis convallis et ut ex phasellus.
+                    </p>
+
+                    <div class="sweet_person mt-5">
+                        <button>
+                            <img src="photos/person_1.png" alt="">
+                        </button>
+                        <div class="sweet_person_text">
+                            <h5 class="mt-4">Hanna Smith</h5>
+                            <p>Pastry Chef</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 ps-4 pe-4 col col-12 col-lg-6 col-sm-12 sweet_img">
+                    <img src="photos/sweet_img.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid pt-5 pt-3">
+            <div class="row">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img">
+                                        <img src="photos/slide_1.jpg" alt="">
+                                    </div>
+                                    <div class="slide_text">
+                                        <div class="text_img">
+                                            <img src="photos/slide_img_1.jpg" alt="">
+                                        </div>
+                                        <div class="text_flex">
+                                            <div class="flex_bg">
+                                                <h2 class="mt-3">About</h2>
+                                                <div class="check mt-4">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Custom Cake</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Homemade</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Bio Ingredients</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Home Service</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex_img">
+                                                <img src="photos/slide_img_2.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img">
+                                        <img src="photos/slide_2.jpg" alt="">
+                                    </div>
+                                    <div class="slide_text_red">
+                                        <div class="red_flex">
+                                            <div class="red_flex_img">
+                                                <img src="photos/slide_img_3.jpg" alt="">
+                                            </div>
+                                            <div class="red_bg">
+                                                <h4>Make Christmas Sweet & cosy</h4>
+                                                <p class="mt-3">Pastry Chef</p>
+                                            </div>
+                                        </div>
+                                        <div class="red_img">
+                                            <img src="photos/slide_img_4.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img_details">
+                                        <button>More Details</button>
+                                    </div>
+
+                                    <div class="slide_detail">
+                                        <div class="detail_bg">
+                                            <p>
+                                                Maecenas eget molestie felis, sed facil massa. Fusce cursus, mauris et
+                                                ultri dapibus, diam sem ulla mcorper
+                                            </p>
+                                            <div class="detail_flex">
+                                                <button>
+                                                    <img src="photos/person_2.png" alt="">
+                                                </button>
+                                                <div class="flex_detail_text">
+                                                    <h4>Andrew Odge</h4>
+                                                    <p>CUSTOMER</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail_img">
+                                            <h1>Types Of Sweets</h1>
+                                            <h2>8<span>0</span>+</h2>
+                                            <h3>APPLY NOW</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img">
+                                        <img src="photos/slide_1.jpg" alt="">
+                                    </div>
+                                    <div class="slide_text">
+                                        <div class="text_img">
+                                            <img src="photos/slide_img_1.jpg" alt="">
+                                        </div>
+                                        <div class="text_flex">
+                                            <div class="flex_bg">
+                                                <h2 class="mt-3">About</h2>
+                                                <div class="check mt-4">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Custom Cake</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Homemade</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Bio Ingredients</p>
+                                                </div>
+                                                <div class="check">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    <p>Home Service</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex_img">
+                                                <img src="photos/slide_img_2.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img">
+                                        <img src="photos/slide_2.jpg" alt="">
+                                    </div>
+                                    <div class="slide_text_red">
+                                        <div class="red_flex">
+                                            <div class="red_flex_img">
+                                                <img src="photos/slide_img_3.jpg" alt="">
+                                            </div>
+                                            <div class="red_bg">
+                                                <h4>Make Christmas Sweet & cosy</h4>
+                                                <p class="mt-3">Pastry Chef</p>
+                                            </div>
+                                        </div>
+                                        <div class="red_img">
+                                            <img src="photos/slide_img_4.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-container">
+                                <div class="auto_slide">
+                                    <div class="slide_img_details">
+                                        <button>More Details</button>
+                                    </div>
+
+                                    <div class="slide_detail">
+                                        <div class="detail_bg">
+                                            <p>
+                                                Maecenas eget molestie felis, sed facil massa. Fusce cursus, mauris et
+                                                ultri dapibus, diam sem ulla mcorper
+                                            </p>
+                                            <div class="detail_flex">
+                                                <button>
+                                                    <img src="photos/person_2.png" alt="">
+                                                </button>
+                                                <div class="flex_detail_text">
+                                                    <h4>Andrew Odge</h4>
+                                                    <p>CUSTOMER</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail_img">
+                                            <h1>Types Of Sweets</h1>
+                                            <h2>8<span>0</span>+</h2>
+                                            <h3>APPLY NOW</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="order"></div> <!-- Order Div -->
+
+        <div class="container">
+            <div class="row">
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12 dessert_col">
+                    <div class="dessert">
+                        <img src="photos/dessert_img.png" alt="">
+                        <p>Natural and organic ingredients</p>
+                    </div>
+                    <h2 class="mt-5">Homemade desserts directly to your home</h2>
+                    <p class="mt-4 dessert_col_p">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu maximus ante, eget
+                        sollicitudin metus. Sed fringilla efficitur fringilla. Vestibulum ante ipsum primis in faucibus
+                        orci luctus et ultrices posuere
+                    </p>
+                    <button class="mt-4">DETAILS</button>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12">
+                    <div class="dessert_red">
+                        <div class="dessert_red_img">
+                            <p>8 pcs.</p>
+                            <h2>$ <span>19.99</span></h2>
+                            <h5 class="mt-3">COOKIES</h5>
+                        </div>
+                        <div class="dessert_red_text">
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Praesent ultrices urna purus</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Sed vitae tristique nisl ultrices</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Donec a ligula lacinia, consect</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Nunc scelerisque velit a pulvinar</p>
+                            </div>
+
+                            <button class="mt-4">
+                                MORE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12">
+                    <div class="dessert_green">
+                        <div class="dessert_green_img">
+                            <p>20 guests</p>
+                            <h2>$ <span>79.99</span></h2>
+                            <h5 class="mt-3">CAKE</h5>
+                        </div>
+                        <div class="dessert_red_text">
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Donec eu volutpat mi, non turpis</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Donec a ligula lacinia, consect</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Sed vitae tristique nisl ultrices</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Praesent ultrices urna purus</p>
+                            </div>
+                            <div class="right">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Nunc scelerisque velit a pulvinar</p>
+                            </div>
+
+                            <button class="mt-4">
+                                MORE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 bg_arrow">
+            <div class="row">
+                <div class="mt-5 col col-12 col-lg-6 col-sm-12">
+                    <div class="num_col">
+                        <div class="num_padding">
+                            <img src="photos/num_1.png" alt="">
+                            <div class="num_text">
+                                <h3>Fast online order</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+                                    ullamcorper mattis, pulvinar dapibus leo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-6 col-sm-12">
+                    <div class="num_col">
+                        <div class="num_padding">
+                            <img src="photos/num_2.png" alt="">
+                            <div class="num_text">
+                                <h3>Fast online order</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+                                    ullamcorper mattis, pulvinar dapibus leo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br id="work"><br> <!-- Work Div -->
+
+        <div class="container-fluid mt-5 custom_bg">
+            <div class="row">
+                <div class="col col-12 col-lg-8 col-sm-12 p-0 custom_info_img">
+                    <img src="photos/custom_img.jpg" alt="">
+                </div>
+
+                <div class="col col-12 col-lg-4 col-sm-12 custom_flex">
+                    <div class="custom_info_text">
+                        <span>Also order on the eve</span>
+                        <h1 class="mt-4">Custom fresh desserts & special flours</h1>
+                        <p class="mt-4">
+                            Donec id blandit ante. Duis maximus, est quis ultricies euismod, nunc ante vulputate ex, nec
+                            volutpat risus risus in ipsum. Sed at purus diam.
+                        </p>
+
+                        <div class="butt_div">
+                            <button class="mt-4 butt_red">
+                                <span>Celiacs</span>
+                                <span>45%</span>
+                            </button>
+
+                            <button class="mt-4 butt_green">
+                                <span>Lactose intolerances</span>
+                                <span>86%</span>
+                            </button>
+                        </div>
+
+                        <button class="mt-5 custom_bt">
+                            MORE INFO
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="service"></div> <!-- Service Div -->
+
+        <div class="container mt-5">
+            <img class="design" src="photos/design_2.png" alt="">
+            <h2 class="mt-4">
+                Our best services & cake <br>
+                during the holidays
+            </h2>
+            <div class="row">
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12 icon">
+                    <img src="photos/icon_1.png" alt="">
+                    <p class="mt-4 icon_p">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada risus id orci sodales
+                    </p>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12 icon">
+                    <img src="photos/icon_2.png" alt="">
+                    <p class="mt-4 icon_p">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada risus id orci sodales
+                    </p>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12 icon">
+                    <img src="photos/icon_3.png" alt="">
+                    <p class="mt-4 icon_p">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada risus id orci sodales
+                    </p>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12 icon">
+                    <img src="photos/icon_4.png" alt="">
+                    <p class="mt-4 icon_p">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada risus id orci sodales
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12 icon_col">
+                    <div class="icon_img">
+                        <div class="icon_1">
+                            <h3>All Organic</h3>
+                            <p class="mt-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc orci nisl, tempus ut sem
+                                a, scelerisque
+                            </p>
+                        </div>
+
+                        <div class="icon_2">
+                            <h3>Get in Touch</h3>
+                            <div class="get_flex mt-5">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>111 8th Ave, New York U.S.A.</span>
+                            </div>
+
+                            <div class="get_flex mt-4">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>Office + 256-367-4789</span>
+                            </div>
+
+                            <div class="get_flex mt-4">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>info@bakery.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12 icon_col">
+                    <div class="icon_3">
+                        <img src="photos/icon_design_1.png" alt="">
+                        <h1 class="mt-4">Biscuits</h1>
+                        <p>Cinnamon flavor</p>
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-4 col-sm-12 icon_col">
+                    <div class="icon_4">
+                        <img src="photos/icon_design_2.png" alt="">
+                        <h1 class="mt-4">Panettone</h1>
+                        <p>With raisins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact"></div> <!-- Contact Div -->
+
+        <div class="container-fluid offer_bg mt-5 pt-5 pb-5">
+            <div class="container pt-5 pb-5 contact_bg">
+                <form class="row d-flex justify-content-around g-3 needs-validation" novalidate>
+                    <div class="col-md-3">
+                        <label for="validationCustom01" class="form-label">First name</label>
+                        <input type="text" placeholder="Enter Your First Name..." class="form-control"
+                            id="validationCustom01" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Middle name</label>
+                        <input type="text" placeholder="Enter Your Middle Name..." class="form-control"
+                            id="validationCustom02" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Last name</label>
+                        <input type="text" placeholder="Enter Your Last Name..." class="form-control"
+                            id="validationCustom02" required>
+                    </div>
+                </form>
+
+                <form class="row mt-4 d-flex justify-content-around g-3 needs-validation" novalidate>
+                    <div class="col-md-3">
+                        <label for="validationCustomUsername" class="form-label">User Email</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" placeholder="Enter Your Email..." class="form-control"
+                                id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">City</label>
+                        <select class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Rajkot</option>
+                            <option>Gandhinagar</option>
+                            <option>Bombay</option>
+                            <option>Jamnagar</option>
+                            <option>Mumbai</option>
+                            <option>Delhi</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">State</label>
+                        <select class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Gujarat</option>
+                            <option>Maharastra</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Keral</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Tamilnadu</option>
+                        </select>
+                    </div>
+                </form>
+
+                <form class="row mt-4 d-flex justify-content-around g-3 needs-validation" novalidate>
+                    <div class="col-md-3">
+                        <label for="validationCustom05" class="form-label">Zip</label>
+                        <input type="text" placeholder="Choose From Browser..." class="form-control"
+                            id="validationCustom05" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom05" class="form-label">Select Your Gender</label>
+                        <br>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Male
+                        </label>
+
+                        <input class="form-check-input ms-5" type="radio" name="flexRadioDefault"
+                            id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Female
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom05" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="validationCustom05" required>
+                    </div>
+                </form>
+
+                <form class="row mt-4 d-flex justify-content-around g-3 needs-validation" novalidate>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="gallery"></div> <!-- Gallery Div -->
+
+        <div class="container mt-5">
+            <img class="design" src="photos/design_1.png" alt="">
+            <h1 class="mt-4">Our Works</h1>
+            <div class="row">
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_1.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_2.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_3.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_4.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_5.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_6.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_7.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="mt-5 col col-12 col-lg-3 col-md-6 col-sm-12">
+                    <div class="gallery">
+                        <img src="photos/gallery_8.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-fluid mt-5 footer_bg">
+                <div class="row">
+                    <div class="mt-5 col col-12 col-lg-4 col-sm-12 p-sm-5">
+                        <div class="footer_info">
+                            <h5>ABOUT US</h5>
+
+                            <p class="mt-5">
+                                Sed sit amet nisl in velit viverra bibendum in ac nisi. Etiam efficitur dui vitae sem
+                                rutrum, id pretium nunc varius. Vestibulum hendrerit malesuada.
+                            </p>
+
+                            <button class="icon_butt">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </button>
+                            <button class="icon_butt">
+                                <i class="fa-brands fa-instagram"></i>
+                            </button>
+                            <button class="icon_butt">
+                                <i class="fa-brands fa-twitter"></i>
+                            </button>
+                            <button class="icon_butt">
+                                <i class="fa-brands fa-youtube"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 col col-12 col-lg-4 col-sm-12 p-sm-5">
+                        <div class="footer_info">
+                            <h5>ALL CONTACTS</h5>
+
+                            <div class="check mt-5 footer_check">
+                                <i class="fa-solid fa-check"></i>
+                                <p>111 8th Ave, New York U.S.A.</p>
+                            </div>
+                            <div class="check footer_check">
+                                <i class="fa-solid fa-check"></i>
+                                <p>Office +1-202-555-0153</p>
+                            </div>
+                            <div class="check footer_check">
+                                <i class="fa-solid fa-check"></i>
+                                <p>info@bakery.com</p>
+                            </div>
+                            <div class="check footer_check">
+                                <i class="fa-solid fa-check"></i>
+                                <p>08 am - 06 pm Sunday closed</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-5 col col-12 col-lg-4 col-sm-12 p-sm-5">
+                        <div class="footer_info">
+                            <h5>SUBSCRIBE</h5>
+
+                            <p class="mt-5">
+                                Sed sit amet nisl in velit viverra bibendum in ac nisi. Etiam efficitur dui vitae sem
+                            </p>
+
+                            <div class="info_flex">
+                                <input type="text" placeholder="Insert Your Mail" name="" id="">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </center>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<script src="style.js"></script>
