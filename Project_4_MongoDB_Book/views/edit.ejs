@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .edit_page {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image: url('https://i.pinimg.com/originals/83/ed/6b/83ed6b44b94b45a3d28af5caadcded43.gif');
+            background-size: 100% 115%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            form {
+                width: 650px;
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+                border-radius: 10px;
+                padding-bottom: 40px;
+                color: white;
+
+                h1 {
+                    color: #007bff;
+                    font-size: 50px;
+                }
+
+                h3 {
+                    /* width: 80%; */
+                    height: 10px;
+                    text-align: left;
+                }
+
+                input {
+                    width: 100%;
+                    height: 35px;
+                }
+
+                .edit_diff {
+                    width: 90%;
+                }
+
+                .edit_book_flex {
+                    width: 90%;
+                    margin-top: 25px;
+                    display: flex;
+                    gap: 20px;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .edit_first {
+                        width: 50%;
+                    }
+
+                    .edit_sec {
+                        width: 33%;
+                    }
+                }
+
+                button {
+                    height: 45px;
+                    padding: 0px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    background: #007bff;
+                    color: white;
+                    font-size: 18px;
+                    margin-top: 20px;
+                    transition: 1s ease-in-out;
+                }
+
+                button:hover {
+                    border: 2px solid #007bff;
+                    color: #007bff;
+                    background: none;
+                    transition: 1s;
+                    font-weight: bolder;
+                }
+
+
+
+                .rating-system {
+                    height: 40px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                }
+
+                .rating-system .fa-star {
+                    font-size: 25px;
+                    color: #ccc;
+                    transition: color 0.3s ease;
+                }
+
+                .rating-system .fa-star.gold {
+                    color: #ffc107;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="edit_page">
+            <form action="/updateData" method="post">
+                <h1>Change Data</h1>
+                <input hidden type="text" value="<%=data.id%>" name="id">
+
+                <div class="edit_diff">
+                    <h3>Image</h3>
+                    <input type="text" value="<%=data.image%>" placeholder="Book Image..." name="img">
+                </div>
+
+                <div class="edit_book_flex">
+                    <div class="edit_first">
+                        <h3>Book Name</h3>
+                        <input type="text" value="<%=data.name%>" placeholder="Book Name..." name="name">
+                    </div>
+                    <div class="edit_first">
+                        <h3>Author Name</h3>
+                        <input type="text" value="<%=data.author%>" placeholder="Author Name..." name="author">
+                    </div>
+                </div>
+
+                <div class="edit_book_flex">
+                    <div class="edit_sec">
+                        <h3>Book Price</h3>
+                        <input type="price" value="<%=data.price%>" placeholder="Price..." name="price">
+                    </div>
+                    <div class="edit_sec">
+                        <h3>Released Date</h3>
+                        <input type="date" value="<%= new Date(data.date).toISOString().slice(0, 10) %>" placeholder="Released Date..." name="date">
+                    </div>
+                    <div class="edit_sec">
+                        <h3>Rating System</h3>
+                        <div class="rating-system">
+                            <i class="fa fa-star" data-value="1"></i>
+                            <i class="fa fa-star" data-value="2"></i>
+                            <i class="fa fa-star" data-value="3"></i>
+                            <i class="fa fa-star" data-value="4"></i>
+                            <i class="fa fa-star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" name="rate" value="<%= data.rate %>" id="rating-value">
+                    </div>
+
+                </div>
+                <br>
+                <button type="submit" onclick="alert('Your Product Successfully Update 😀...')">Update Data</button>
+            </form>
+        </div>
+    </center>
+</body>
+
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const stars = document.querySelectorAll(".rating-system .fa-star")
+        const ratingInput = document.getElementById("rating-value")
+
+        const highlightStars = (rating) => {
+            stars.forEach((star) => {
+                const starValue = parseInt(star.getAttribute("data-value"))
+                if (starValue <= rating) {
+                    star.classList.add("gold")
+                }
+                else {
+                    star.classList.remove("gold")
+                }
+            })
+        }
+
+        const initialRating = parseInt(ratingInput.value || "0")
+        highlightStars(initialRating)
+
+        stars.forEach((star) => {
+            star.addEventListener("click", (e) => {
+                const selectedValue = parseInt(star.getAttribute("data-value"))
+
+                if (star.classList.contains("gold")) {
+                    highlightStars(selectedValue - 1)
+                    ratingInput.value = selectedValue - 1
+                }
+                else {
+                    highlightStars(selectedValue)
+                    ratingInput.value = selectedValue
+                }
+            })
+        })
+    })
+
+</script>

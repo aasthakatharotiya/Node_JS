@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <center>
+        <!-- <h1>Hello MongoDB</h1> -->
+
+        <div class="nav_btn">
+            <button class="active" onclick="filterBooks('all', this)">All</button>
+            <button onclick="filterBooks('fiction', this)">Fiction</button>
+            <button onclick="filterBooks('children', this)">Children's Books</button>
+            <button onclick="filterBooks('thriller', this)">Thriller/Mystery</button>
+            <button onclick="filterBooks('romance', this)">Romance</button>
+        </div>
+
+        <div class="index_form_main">
+            <form action="/addData" method="post" class="index_form">
+                <h1>Add Your New Book</h1>
+
+                <div style="margin-top: -20px;" class="index_form_flex">
+                    <div class="index_form_first">
+                        <h3>Book Image</h3>
+                        <input required type="text" name="image" placeholder="Enter Book Image Url...">
+                    </div>
+                    <div class="index_form_second">
+                        <h3>Book</h3>
+                        <input required type="file" name="pdf" class="file_input">
+                    </div>
+                </div>
+
+                <div class="index_form_flex">
+                    <div class="index_form_first">
+                        <h3>Book Name</h3>
+                        <input required type="text" name="name" placeholder="Enter Book Name...">
+                    </div>
+                    <div class="index_form_second">
+                        <h3>Book Author</h3>
+                        <input required type="text" name="author" placeholder="Enter Book Author Name...">
+                    </div>
+                </div>
+
+                <div class="index_form_flex">
+                    <div class="index_form_first">
+                        <h3>Book Price</h3>
+                        <input required type="number" name="price" placeholder="Enter Book Price...">
+                    </div>
+                    <div class="index_form_second">
+                        <h3>Book Category</h3>
+                        <select required name="category" id="">
+                            <option value="">Select Category</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="children">Children's Books</option>
+                            <option value="thriller">Thriller/Mystery</option>
+                            <option value="romance">Romance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="index_form_flex">
+                    <div class="index_form_first">
+                        <h3>Book Date</h3>
+                        <input required type="date" name="date">
+                    </div>
+                    <div class="index_form_second">
+                        <h3>Book Rate</h3>
+                        <div class="rating-system">
+                            <i class="fa fa-star" data-value="1"></i>
+                            <i class="fa fa-star" data-value="2"></i>
+                            <i class="fa fa-star" data-value="3"></i>
+                            <i class="fa fa-star" data-value="4"></i>
+                            <i class="fa fa-star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" name="rate" id="rating-value">
+                    </div>
+                </div>
+
+                <button type="submit">Add Data</button>
+            </form>
+        </div>
+        <br><br>
+
+        <div class="book_product">
+            <div class="new_book_add">
+                <button class="add_book_btn">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+                <h1>Add Your New Book</h1>
+            </div>
+
+
+            <!-- <table border="2px">
+                <thead>
+                    <tr style="height: 40px;">
+                        <th style="width: 30%; text-align: center;"><u>Image</u></th>
+                        <th style="width: 15%; text-align: center;"><u>Name</u></th>
+                        <th style="width: 15%; text-align: center;"><u>Author</u></th>
+                        <th style="width: 15%; text-align: center;"><u>Price</u></th>
+                        <th style="width: 15%; text-align: center;"><u>Date</u></th>
+                        <th style="width: 15%; text-align: center;"><u>Rate</u></th>
+                        <th style="width: 30%; text-align: center;" colspan="2"><u>Action</u></th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <% data.map((e, i) => { %>
+                        <tr style="height: 40px;">
+                            <td style="width: 30%; text-align: center;"><%= e.image%></td>
+                            <td style="width: 15%; text-align: center;"><%= e.name%></td>
+                            <td style="width: 15%; text-align: center;"><%= e.author%></td>
+                            <td style="width: 15%; text-align: center;"><%= e.price%></td>
+                            <td style="width: 15%; text-align: center;"><%= e.date%></td>
+                            <td style="width: 15%; text-align: center;"><%= e.rate%></td>
+                            <td style="width: 10%; text-align: center;">
+                                <a href="/editData?id=<%=e.id%>">
+                                    <button>Edit</button>
+                                </a>
+                            </td>
+                            <td style="width: 20%; text-align: center;">
+                                <a href="/deleteData?id=<%=e.id%>">
+                                    <button>Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table> -->
+
+            <% data.map((e, i)=> { %>
+                <div class="book_main <%= e.category %>" data-category="<%= e.category %>">
+                    <div class="book_img">
+                        <div class="book_edit_delete">
+                            <a href="/editData?id=<%=e.id%>">
+                                <button class="edit_book_icon">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </a>
+                            <a href="/deleteData?id=<%=e.id%>">
+                                <button class="delete_book_icon" onclick="alert('Your Product Was Delete 🥺🛒...')">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </a>
+                        </div>
+                        <a href=<%=e.pdf %> target="_blank">
+                            <img src=<%=e.image%> alt="">
+                        </a>
+                    </div>
+                    <div class="book_text">
+                        <h2>
+                            <%= e.name%>
+                        </h2>
+                        <div class="book_author">
+                            <p>-<%= e.author%>
+                            </p>
+                            <h4>
+                                <!-- <%= e.date%> -->
+                                <h4><%= new Date(e.date).toDateString().split(' ').slice(1).join(' ') %></h4>
+                            </h4>
+                        </div>
+                        <div class="book_flex">
+                            <h3>$<%= e.price%>
+                            </h3>
+                            <div class="star_rating">
+                                <% for (let j=1; j <=5; j++) { %>
+                                    <i class="fa fa-star <%= j <= e.rate ? 'filled' : '' %>"></i>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </center>
+</body>
+
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const stars = document.querySelectorAll(".fa-star")
+        const ratingValueInput = document.getElementById("rating-value")
+        let currentRating = 0
+
+        stars.forEach((star) => {
+            star.addEventListener("click", () => {
+                const selectedRating = parseInt(star.getAttribute("data-value"))
+
+                if (currentRating === selectedRating) {
+                    currentRating = 0
+                    ratingValueInput.value = ""
+                } else {
+                    currentRating = selectedRating
+                    ratingValueInput.value = currentRating
+                }
+
+                stars.forEach((s, index) => {
+                    if (index < currentRating) {
+                        s.classList.add("gold")
+                    } else {
+                        s.classList.remove("gold")
+                    }
+                });
+            });
+        });
+    });
+
+
+
+
+    let add_book_btn = document.querySelector(".add_book_btn")
+    let index_form_main = document.querySelector(".index_form_main")
+
+    add_book_btn.addEventListener("click", function(){
+        index_form_main.style.visibility = "visible"
+    })
+
+
+
+
+
+    function filterBooks(category, btn) {
+        let books = document.querySelectorAll('.book_main')
+        books.forEach(book => {
+            if (category === 'all' || book.dataset.category === category) {
+                book.style.display = 'block'
+            } else {
+                book.style.display = 'none'
+            }
+        })
+
+        const buttons = document.querySelectorAll('.nav_btn button')
+        buttons.forEach(button => button.classList.remove('active'))
+        btn.classList.add('active')
+    }
+
+</script>
