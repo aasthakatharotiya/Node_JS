@@ -99,45 +99,7 @@
 
                 <h1>Add Your New Book</h1>
             </div>
-
-
-            <!-- <table border="2px">
-                <thead>
-                    <tr style="height: 40px;">
-                        <th style="width: 30%; text-align: center;"><u>Image</u></th>
-                        <th style="width: 15%; text-align: center;"><u>Name</u></th>
-                        <th style="width: 15%; text-align: center;"><u>Author</u></th>
-                        <th style="width: 15%; text-align: center;"><u>Price</u></th>
-                        <th style="width: 15%; text-align: center;"><u>Date</u></th>
-                        <th style="width: 15%; text-align: center;"><u>Rate</u></th>
-                        <th style="width: 30%; text-align: center;" colspan="2"><u>Action</u></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    <% data.map((e, i) => { %>
-                        <tr style="height: 40px;">
-                            <td style="width: 30%; text-align: center;"><%= e.image%></td>
-                            <td style="width: 15%; text-align: center;"><%= e.name%></td>
-                            <td style="width: 15%; text-align: center;"><%= e.author%></td>
-                            <td style="width: 15%; text-align: center;"><%= e.price%></td>
-                            <td style="width: 15%; text-align: center;"><%= e.date%></td>
-                            <td style="width: 15%; text-align: center;"><%= e.rate%></td>
-                            <td style="width: 10%; text-align: center;">
-                                <a href="/editData?id=<%=e.id%>">
-                                    <button>Edit</button>
-                                </a>
-                            </td>
-                            <td style="width: 20%; text-align: center;">
-                                <a href="/deleteData?id=<%=e.id%>">
-                                    <button>Delete</button>
-                                </a>
-                            </td>
-                        </tr>
-                    <% }) %>
-                </tbody>
-            </table> -->
-
+            
             <% data.map((e, i)=> { %>
                 <div class="book_main <%= e.category %>" data-category="<%= e.category %>">
                     <div class="book_img">
