@@ -27,7 +27,6 @@ header {
             overflow: hidden;
             /* border: 2px solid; */
             display: flex;
-            /* justify-content: center; */
             align-items: center;
 
             button {
