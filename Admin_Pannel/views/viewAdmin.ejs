@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <!-- font-awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<style>
+    /* .tr_tag{
+        border: 2px solid;
+
+        .td_tag{
+            border: 2px solid;
+        }
+    } */
+
+
+    .edit_btn,
+    .delete_btn{
+        border: none;
+        border-radius: 5px;
+        height: 35px;
+        width: 35px;
+        color: white;
+        transition: 0.5s ease-in-out;
+    }
+
+    .edit_btn{
+        background-color: green;
+    }
+    .delete_btn{
+        background-color: rgb(255, 136, 0);
+    }
+
+    .edit_btn:hover{
+        color: green;
+        background: none;
+        border: 2px solid green;
+    }
+    .delete_btn:hover{
+        color: rgb(255, 136, 0);
+        background: none;
+        border: 2px solid rgb(255, 136, 0);
+    }
+</style>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <%- include("header")%>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <%- include("aside")%>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Tables</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title m-b-0">Static Table</h5>
+                            </div>
+                            <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">First Name</th>
+                                      <th scope="col">Last Name</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Password</th>
+                                      <th scope="col">Contact No.</th>
+                                      <th scope="col">Message</th>
+                                      <th scope="col" colspan="2">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% data.map((e, i) => { %>
+                                        <tr class="tr_tag">
+                                            <td class="td_tag"><%= i+1 %></td>
+                                            <td class="td_tag"><%= e.fname %></td>
+                                            <td class="td_tag"><%= e.lname %></td>
+                                            <td class="td_tag"><%= e.email %></td>
+                                            <td class="td_tag"><%= e.password %></td>
+                                            <td class="td_tag"><%= e.contact %></td>
+                                            <td class="td_tag"><%= e.message %></td>
+                                            <td class="td_tag">
+                                                <a href="/editAdminData?id=<%=e.id%>">
+                                                    <button class="edit_btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                                </a>
+                                            </td>
+                                            <td class="td_tag">
+                                                <a href="/deleteAdminData?id=<%=e.id%>">
+                                                    <button class="delete_btn"><i class="fa-regular fa-trash-can"></i></button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="dist/js/custom.min.js"></script>
+    <!-- this page js -->
+    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+</body>
+
+</html>
