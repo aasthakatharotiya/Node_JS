@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+    <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <!-- font-awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        background-color: rgb(246, 248, 250);
+    }
+
+    .card_main {
+        /* border: 2px solid; */
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow: hidden;
+        margin-top: -40px;
+
+        .card_pr {
+            width: 375px;
+            border: 1px solid rgb(209, 208, 208);
+            border-radius: 10px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            overflow: hidden;
+            transition: 0.5s ease-in-out;
+
+            .button_card {
+                height: 100%;
+                /* border: 2px solid; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+                padding: 0px 10px;
+                transition: 0.5s ease-in-out;
+
+                .edit_btn,
+                .delete_btn {
+                    border: none;
+                    border-radius: 5px;
+                    height: 35px;
+                    width: 35px;
+                    color: white;
+                    transition: 0.5s ease-in-out;
+                }
+
+                .edit_btn {
+                    background-color: green;
+                }
+
+                .delete_btn {
+                    background-color: rgb(255, 136, 0);
+                }
+
+                .edit_btn:hover {
+                    color: green;
+                    background: none;
+                    border: 2px solid green;
+                }
+
+                .delete_btn:hover {
+                    color: rgb(255, 136, 0);
+                    background: none;
+                    border: 2px solid rgb(255, 136, 0);
+                }
+            }
+
+            .priority_card {
+                height: 100%;
+                width: 10%;
+                /* border: 2px solid; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    transform: rotate(-90deg);
+                    width: fit-content;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+            }
+
+            .high-priority {
+                background-color: red;
+            }
+
+            .medium-priority {
+                background-color: orange;
+            }
+
+            .low-priority {
+                background-color: green;
+            }
+
+            .default-priority {
+                background-color: gray;
+            }
+
+
+            .img_card {
+                height: 100%;
+                width: 35%;
+                /* border: 2px solid; */
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    height: 100px;
+                    width: 100px;
+                    border: none;
+                    background: none;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* margin-left: -25px;
+                    margin-top: -25px; */
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+
+
+            .text_card {
+                height: 100%;
+                width: 55%;
+                text-align: left;
+                /* border: 2px solid; */
+                overflow: hidden;
+                padding: 10px 0px 10px 0px;
+
+                h2 {
+                    font-size: 28px;
+                }
+
+                h3 {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .card_pr:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+            .button_card {
+                margin-left: -55px;
+                transition: 1s;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                background: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+</style>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <%- include("aside") %>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <%- include("header") %>
+                    <!--  Header End -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title m-b-0">Admin</h5>
+                                    </div>
+                                    <center>
+                                        <div class="card_main">
+                                            <% data.map((e, i)=> { %>
+                                                <div class="card_pr position-relative">
+
+                                                    <div
+                                                        class="priority_card <%= e.category === 'High' ? 'high-priority' : e.category === 'Medium' ? 'medium-priority' : e.category === 'Low' ? 'low-priority' : 'default-priority' %>">
+                                                        <p>
+                                                            <%= e.category %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="img_card">
+                                                        <button>
+                                                            <img src="<%= e.img %>" alt="">
+                                                        </button>
+                                                    </div>
+                                                    <div class="text_card">
+                                                        <h2>
+                                                            <%= e.fname %>
+                                                        </h2>
+                                                        <h2>
+                                                            <%= e.lname %>
+                                                        </h2>
+                                                        <h3>
+                                                            <%= e.task %>
+                                                        </h3>
+                                                        <h3>
+                                                            <%= e.email %>
+                                                        </h3>
+                                                        <h3>91 + <%= e.contact %>
+                                                        </h3>
+                                                    </div>
+
+                                                    <div class="button_card position-absolute top-0 start-100">
+                                                        <a href="/editAdminData?id=<%=e.id%>">
+                                                            <button class="edit_btn">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </button>
+                                                        </a>
+                                                        <a href="/deleteAdminData?id=<%=e.id%>">
+                                                            <button class="delete_btn">
+                                                                <i class="fa-regular fa-trash-can"></i>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <% }) %>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+            </div>
+    </div>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
