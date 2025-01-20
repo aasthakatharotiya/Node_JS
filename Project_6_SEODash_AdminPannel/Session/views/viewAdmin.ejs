@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+    <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+     <!-- font-awesome icon -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    /* .tr_tag{
+        border: 2px solid;
+
+        .td_tag{
+            border: 2px solid;
+        }
+    } */
+
+    body{
+        background-color: rgb(246,248,250);
+    }
+
+    .edit_btn,
+    .delete_btn{
+        border: none;
+        border-radius: 5px;
+        height: 35px;
+        width: 35px;
+        color: white;
+        transition: 0.5s ease-in-out;
+    }
+
+    .edit_btn{
+        background-color: green;
+    }
+    .delete_btn{
+        background-color: rgb(255, 136, 0);
+    }
+
+    .edit_btn:hover{
+        color: green;
+        background: none;
+        border: 2px solid green;
+    }
+    .delete_btn:hover{
+        color: rgb(255, 136, 0);
+        background: none;
+        border: 2px solid rgb(255, 136, 0);
+    }
+</style>
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <%- include("aside") %>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <%- include("header") %>
+                    <!--  Header End -->
+                    <div class="container-fluid">
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title m-b-0">Static Table</h5>
+                                    </div>
+                                    <center>
+                                        <table class="table" style="width: 96%;">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Password</th>
+                                                    <th scope="col">Contact No.</th>
+                                                    <th scope="col">Message</th>
+                                                    <th scope="col" colspan="2">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% data.map((e, i)=> { %>
+                                                    <tr class="tr_tag">
+                                                        <td class="td_tag">
+                                                            <%= i+1 %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.fname %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.lname %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.email %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.password %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.contact %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <%= e.message %>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <a href="/editAdminData?id=<%=e.id%>">
+                                                                <button class="edit_btn">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </button>
+                                                            </a>
+                                                        </td>
+                                                        <td class="td_tag">
+                                                            <a href="/deleteAdminData?id=<%=e.id%>">
+                                                                <button class="delete_btn">
+                                                                    <i class="fa-regular fa-trash-can"></i>
+                                                                </button>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Right sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- .right-sidebar -->
+                        <!-- ============================================================== -->
+                        <!-- End Right sidebar -->
+                        <!-- ============================================================== -->
+                    </div>
+            </div>
+    </div>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
