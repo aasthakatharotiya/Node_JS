@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .view_user {
+        display: flex;
+        gap: 10px;
+
+        .view_user_img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .view_user_text {
+            display: flex;
+            flex-direction: column;
+
+            .profile-email {
+                font-size: 14px;
+                color: rgb(143, 141, 141);
+            }
+        }
+    }
+
+    .current-user {
+        background-color: #eceaea !important;
+    }
+
+    .other-user {
+        background-color: #ffffff !important;
+    }
+
+    .cat_btn_blue,
+    .cat_btn_green {
+        /* background-color: rgb(63,80,246); */
+        /* background-color: rgb(0,204,205); */
+        border: none;
+        border-radius: 5px;
+        color: white;
+        /* font-size: 18px; */
+        height: 35px;
+        width: 100%;
+        padding: 0px 15px;
+    }
+
+    .cat_btn_blue {
+        background-color: rgb(63, 80, 246);
+    }
+
+    .cat_btn_green {
+        background-color: rgb(0, 204, 205);
+    }
+
+
+    .dropdown-menu .dropdown-item {
+        background-color: #ffffff !important;
+        /* Light background */
+        color: #000000 !important;
+        /* Text color */
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #f8f9fa !important;
+        /* Hover effect */
+    }
+
+    .dropdown-menu .current-user {
+        background-color: #eceaea !important;
+        /* Ensure consistency */
+    }
+</style>
+
+<body>
+    <div id="theme-settings" class="settings-panel">
+        <i class="settings-close mdi mdi-close"></i>
+        <p class="settings-heading">SIDEBAR SKINS</p>
+        <div class="sidebar-bg-options selected" id="sidebar-default-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div> Default
+        </div>
+        <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div> Dark
+        </div>
+        <p class="settings-heading mt-2">HEADER SKINS</p>
+        <div class="color-tiles mx-0 px-4">
+            <div class="tiles light"></div>
+            <div class="tiles dark"></div>
+        </div>
+    </div>
+    <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+        <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+            <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="index.html"><img
+                    src="/assets/images/logo-mini.svg" alt="logo" /></a>
+            <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                        data-toggle="dropdown">
+                        <i class="mdi mdi-bell-outline"></i>
+                        <span class="count count-varient1">7</span>
+                    </a>
+                    <div class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+                        aria-labelledby="notificationDropdown">
+                        <h6 class="p-3 mb-0">Notifications</h6>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="/assets/images/faces/face4.jpg" alt="" class="profile-pic" />
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="mb-0"> Dany Miles <span class="text-small text-muted">commented on your
+                                        photo</span>
+                                </p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="/assets/images/faces/face3.jpg" alt="" class="profile-pic" />
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="mb-0"> James <span class="text-small text-muted">posted a photo on your
+                                        wall</span>
+                                </p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="/assets/images/faces/face2.jpg" alt="" class="profile-pic" />
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="mb-0"> Alex <span class="text-small text-muted">just mentioned you in his
+                                        post</span>
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <p class="p-3 mb-0">View all activities</p>
+                    </div>
+                </li>
+                <li class="nav-item dropdown d-none d-sm-flex">
+                    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#"
+                        data-toggle="dropdown">
+                        <i class="mdi mdi-email-outline"></i>
+                        <span class="count count-varient2">5</span>
+                    </a>
+                    <div class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+                        aria-labelledby="messageDropdown">
+                        <h6 class="p-3 mb-0">Messages</h6>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-item-content flex-grow">
+                                <span class="badge badge-pill badge-success">Request</span>
+                                <p class="text-small text-muted ellipsis mb-0"> Suport needed for user123 </p>
+                            </div>
+                            <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-item-content flex-grow">
+                                <span class="badge badge-pill badge-warning">Invoices</span>
+                                <p class="text-small text-muted ellipsis mb-0"> Invoice for order is mailed </p>
+                            </div>
+                            <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-item-content flex-grow">
+                                <span class="badge badge-pill badge-danger">Projects</span>
+                                <p class="text-small text-muted ellipsis mb-0"> New project will start tomorrow </p>
+                            </div>
+                            <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                        </a>
+                        <h6 class="p-3 mb-0">See all activity</h6>
+                    </div>
+                </li>
+                <li class="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex">
+                    <form class="nav-link form-inline mt-2 mt-md-0">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right ml-lg-auto">
+                <!-- <li class="nav-item dropdown d-none d-xl-flex border-0">
+                    <a class="nav-link" href="/category/addCategory">
+                        <button class="cat_btn">Add Category</button> 
+                    </a>
+                </li> -->
+                <li class="nav-item dropdown d-none d-xl-flex border-0">
+                    <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-earth"></i> English </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                        <a class="dropdown-item" href="#"> French </a>
+                        <a class="dropdown-item" href="#"> Spain </a>
+                        <a class="dropdown-item" href="#"> Latin </a>
+                        <a class="dropdown-item" href="#"> Japanese </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown d-none d-xl-flex border-0">
+                    <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-plus"></i> Add </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                        <a class="dropdown-item" href="/category/addCategory">
+                            <button class="cat_btn_blue">Add Category</button>
+                        </a>
+                        <a class="dropdown-item" href="/product/addProduct">
+                            <button class="cat_btn_green">Add Product</button>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item nav-profile dropdown border-0">
+                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
+                        <img class="nav-profile-img mr-2" alt="" src="/<%= locals.user.img%>" />
+                        <span class="profile-name">
+                            <%= locals.user.name%>
+                        </span>
+                    </a>
+                    <div style="margin-left: -100px;" class="dropdown-menu navbar-dropdown w-150"
+                        aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="/profile">
+                            <i class="mdi mdi-account mr-2 text-success"></i> Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log
+                        </a>
+                        <a class="dropdown-item" href="/logout">
+                            <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+                        </a>
+                        <a class="dropdown-item" href="/changePass">
+                            <i class="mdi mdi-key mr-2 text-warning"></i> Change Password
+                        </a>
+                        <hr>
+                        <a class="dropdown-item" href="/addUser">
+                            <i class="mdi mdi-account mr-2 text-primary"></i> Add Another Account
+                        </a>
+                        <hr>
+                        <% viewUser.map((e, i)=> { %>
+                            <a class="dropdown-item view_user <%= e.name === locals.user.name ? 'current-user' : 'other-user' %>"
+                                href="/">
+                                <div class="view_user_img">
+                                    <img class="nav-profile-img mr-2" alt="" src="/<%= e.img %>" />
+                                </div>
+                                <div class="view_user_text">
+                                    <span class="profile-name">
+                                        <%= e.name %>
+                                    </span>
+                                    <span class="profile-email">
+                                        <%= e.email %>
+                                    </span>
+                                </div>
+                            </a>
+                            <% }) %>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Breeze Admin</title>
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="/assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+</head>
+
+<style>
+    .main-panel {
+        position: fixed;
+        height: 100%;
+        width: 83%;
+        overflow: scroll;
+        overflow-x: hidden;
+        right: 0%;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* Profile Card */
+    .profile-card {
+        position: relative;
+        padding: 20px;
+        background: linear-gradient(to bottom, rgb(218, 218, 242), rgb(183,207,231), rgb(75,156,206));
+        /* background: rgba(30, 41, 59, 0.8); */
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Avatar Styles */
+    .avatar-wrapper {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 10px;
+    }
+
+    .avatar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .avatar-inner {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa);
+        opacity: 0.8;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .avatar-glow {
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa);
+        border-radius: 50%;
+        opacity: 0;
+        filter: blur(15px);
+        transition: opacity 0.3s ease;
+    }
+
+    .avatar:hover .avatar-glow {
+        opacity: 0.5;
+    }
+
+    .avatar-border {
+        position: absolute;
+        inset: 0;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa) border-box;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+    }
+
+    /* Profile Info */
+    .profile-info {
+        text-align: center;
+    }
+
+    .name {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        /* color: rgb(66,58,142); */
+        background: linear-gradient(to right, rgb(99, 93, 152), rgb(66,58,142));
+        /* background: linear-gradient(to right, #60a5fa, #a78bfa); */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .title {
+        color: rgb(89, 87, 87);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Stats Section */
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 2rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(to right, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: rgb(89, 87, 87);
+    }
+
+    /* Bio Section */
+    .bio {
+        color: rgb(89, 87, 87);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        margin-top: -10px;
+    }
+
+    /* Skills Section */
+    .skills {
+        display: flex;
+        gap: 0.8rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .skill {
+        padding: 0.5rem 1rem;
+        background: rgba(183, 181, 181, 0.05);
+        border-radius: 2rem;
+        font-size: 0.9rem;
+        color: rgb(89, 87, 87);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .skill:hover {
+        /* background: rgba(255, 255, 255, 0.1); */
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .high {
+        background-color: red;
+        color: white;
+    }
+
+    .medium {
+        background-color: orange;
+        color: white;
+    }
+
+    .low {
+        background-color: green;
+        color: white;
+    }
+
+    /* Action Buttons */
+    .actions {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .action-btn {
+        flex: 1;
+        position: relative;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 0.8rem;
+        font-size: 1rem;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .action-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-effect {
+        position: absolute;
+        inset: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .primary {
+        background: linear-gradient(45deg, #60a5fa20, #a78bfa20);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .primary .btn-effect {
+        background: linear-gradient(45deg, #437ec7, #765acb);
+        opacity: 0;
+    }
+
+    .primary:hover .btn-effect {
+        opacity: 0.4;
+    }
+
+    .secondary {
+        background: transparent;
+        color: rgb(89, 87, 87);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .secondary .btn-effect {
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+    }
+
+    .secondary:hover .btn-effect {
+        opacity: 5;
+    }
+
+    /* Card Effects */
+    .card-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent,rgba(255, 255, 255, 0.1), transparent);
+        animation: shine 8s infinite;
+    }
+
+    @keyframes shine {
+        to {
+            left: 200%;
+        }
+    }
+
+    .card-border {
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: 1.5rem;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa) border-box;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .profile-card:hover .card-border {
+        opacity: 1;
+    }
+
+    .card-glow {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa);
+        border-radius: 1.5rem;
+        opacity: 0;
+        filter: blur(20px);
+        transition: opacity 0.3s ease;
+    }
+
+    .profile-card:hover .card-glow {
+        opacity: 0.05;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .profile-card {
+            padding: 1.5rem;
+        }
+
+        .avatar-wrapper {
+            width: 100px;
+            height: 100px;
+        }
+
+        .name {
+            font-size: 1.5rem;
+        }
+
+        .skills {
+            flex-wrap: wrap;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-scroller">
+        <%- include("aside") %>
+            <div class="container-fluid page-body-wrapper">
+                <%- include("header") %>
+
+                    <div class="main-panel">
+                        <div class="content-wrapper">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <!-- Premium Profile Card -->
+                                        <div class="profile-card">
+                                            <div class="card-content">
+                                                <!-- Avatar Circle -->
+                                                <div class="avatar-wrapper">
+                                                    <div class="avatar">
+                                                        <div class="avatar-inner">
+                                                            <img src="/<%= locals.user.img %>" alt="">
+                                                        </div>
+                                                        <!-- <div class="avatar-glow"></div>
+                                                        <div class="avatar-border"></div> -->
+                                                    </div>
+                                                </div>
+
+                                                <!-- Profile Info -->
+                                                <div class="profile-info">
+                                                    <h2 class="name">
+                                                        <%= locals.user.name %>
+                                                    </h2>
+                                                    <p class="title">
+                                                        <%= locals.user.city %>
+                                                    </p>
+                                                    <p class="title" style="margin-top: -20px;">
+                                                        <%= locals.user.gender %>
+                                                    </p>
+
+                                                    <div class="stats">
+                                                        <div class="stat">
+                                                            <span class="stat-value">1.2k</span>
+                                                            <span class="stat-label">Projects</span>
+                                                        </div>
+                                                        <div class="stat">
+                                                            <span class="stat-value">8.5k</span>
+                                                            <span class="stat-label">Followers</span>
+                                                        </div>
+                                                        <div class="stat">
+                                                            <span class="stat-value">4.7k</span>
+                                                            <span class="stat-label">Following</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="bio">
+                                                        <%= locals.user.message %>
+                                                    </div>
+
+                                                    <div class="skills">
+                                                        <span class="skill">High</span>
+                                                        <span class="skill">Medium</span>
+                                                        <span class="skill">Low</span>
+                                                    </div>
+
+                                                    <div class="actions">
+                                                        <button class="action-btn primary">
+                                                            <span>Follow</span>
+                                                            <div class="btn-effect"></div>
+                                                        </button>
+                                                        <a href="/editUserData?id=<%=locals.user.id%>" class="action-btn secondary">
+                                                            <button style="border: none; background: none; color: white;">
+                                                                <span>Edit</span>
+                                                                <div class="btn-effect"></div>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Card Effects -->
+                                            <div class="card-shine"></div>
+                                            <div class="card-border"></div>
+                                            <div class="card-glow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="footer">
+                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                                    bootstrapdash.com 2020</span>
+                                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                                        href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard
+                                        template</a> from Bootstrapdash.com</span>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.resize.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.categories.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.stack.js"></script>
+    <script src="/assets/vendors/flot/jquery.flot.pie.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/assets/js/off-canvas.js"></script>
+    <script src="/assets/js/hoverable-collapse.js"></script>
+    <script src="/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+
+</body>
+
+</html>
