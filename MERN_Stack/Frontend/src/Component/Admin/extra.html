@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        canvas {
+            width: 100% !important;
+            height: 200px !important;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daily Report Charts</h2>
+    <div class="container">
+        <div class="chart-card">
+            <h3>Weekly Sales</h3>
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Daily Revenue</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Task Completion</h3>
+            <canvas id="doughnutChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Product Distribution</h3>
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Sales',
+                    data: [100, 200, 150, 250, 300, 350],
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            }
+        });
+        
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Revenue',
+                    data: [500, 700, 650, 800, 900, 1000],
+                    backgroundColor: ['red', 'blue', 'green', 'orange', 'purple', 'yellow']
+                }]
+            }
+        });
+        
+        const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Pending', 'In Progress'],
+                datasets: [{
+                    data: [60, 20, 20],
+                    backgroundColor: ['green', 'red', 'yellow']
+                }]
+            }
+        });
+        
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C'],
+                datasets: [{
+                    data: [40, 35, 25],
+                    backgroundColor: ['blue', 'orange', 'purple']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
