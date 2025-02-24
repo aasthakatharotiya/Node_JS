@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function RecipeDashboard() {
 
@@ -12,8 +13,36 @@ export default function RecipeDashboard() {
     const [record, setRecord] = useState([])
     const [editIndex, setEditIndex] = useState(null)
 
+    const navigate = useNavigate()
+
+    const [admin, setAdmin] = useState(null)
+
     useEffect(() => {
-        fetchApi()
+        const token = localStorage.getItem("adminToken")
+        const adminData = localStorage.getItem("adminData")
+
+        if (!token) {
+            navigate('/')
+        }
+        else if (adminData) {
+            setAdmin(JSON.parse(adminData))
+            fetchApi()
+        }
+    }, [navigate])
+
+    const [showProfileList, setShowProfileList] = useState(false)
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest(".profile") && !event.target.closest(".profile_list")) {
+                setShowProfileList(false)
+            }
+        }
+        document.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside)
+        }
     }, [])
 
     const fetchApi = async () => {
@@ -22,24 +51,30 @@ export default function RecipeDashboard() {
         setRecord(response.data.data)
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem("adminToken")
+        localStorage.removeItem("adminData")
+        navigate('/')
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-    
+
         if (!name || !price || !rate) {
             alert("Please fill out all fields and upload an image.")
             return
         }
-    
+
         const formData = new FormData()
         formData.append("name", name)
         formData.append("price", price)
         formData.append("rate", rate)
         formData.append("status", "On The Way")
-    
+
         if (img) {
             formData.append("img", img)
         }
-    
+
         if (editIndex) {
             formData.append("id", editIndex)
             await axios.put("http://localhost:2006/recipe/updateRecipe", formData, {
@@ -50,7 +85,7 @@ export default function RecipeDashboard() {
                 headers: { "Content-Type": "multipart/form-data" }
             })
         }
-    
+
         setName("")
         setRate("")
         setPrice("")
@@ -87,27 +122,60 @@ export default function RecipeDashboard() {
         <div>
             {/* <h1 style={{ color: 'black' }}>---------------- Task Mnager ----------------</h1> */}
             <div>
+                <div className="header_flex">
+                    <div className="left_header">
+                        <h1>Recipe Dashboard</h1>
+                    </div>
+
+                    <div className="right_header">
+                        <div className="profile" onClick={() => setShowProfileList(!showProfileList)}>
+                            {admin ? (
+                                <div className="profile_flex">
+                                    <button>
+                                        <img src={`http://localhost:2006/uploads/${admin.img}`} alt="Profile" />
+                                    </button>
+                                    <div className="profile_text">
+                                        <h3>{admin.name}</h3>
+                                        <p>{admin.email}</p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <h1>Loading...</h1>
+                            )}
+                        </div>
+
+                        <div className={`profile_list ${showProfileList ? "show" : ""}`}>
+                            <button>My Profile</button>
+                            <button onClick={handleLogout}>Logout</button>
+                            <button>Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+                <br /><br /><br />
                 <div className='form_div'>
                     <form onSubmit={handleSubmit}>
                         <div className="name_main">
                             <div className="first_name">
-                                <h3>Name</h3>
+                                <h3>Food Name</h3>
                                 <input required value={name} type="text" placeholder='Enter Name...' onChange={(e) => setName(e.target.value)} />
                             </div>
                             <div className="last_name">
-                                <h3>Rate</h3>
+                                <h3>Food Price</h3>
                                 <input required value={price} type="text" placeholder='Enter Price...' onChange={(e) => setPrice(e.target.value)} />
                             </div>
                         </div>
-                        <div className="img_main">
-                            <div className="img">
-                                <h3>Upload Image</h3>
-                                <input type="file" accept="image/*" className='file_input' onChange={(e) => setImg(e.target.files[0])} />
-                            </div>
-                        </div>
+
                         <div className="select_main">
-                            <div className="category" style={{width: "100%"}}>
-                                <h3>Rate</h3>
+                            <div className="img_main">
+                                <div className="img">
+                                    <h3>Upload Image</h3>
+                                    <input type="file" accept="image/*" className='file_input' onChange={(e) => setImg(e.target.files[0])} />
+                                </div>
+                            </div>
+
+                            <div className="category">
+                                <h3>Food Rate</h3>
                                 <select required value={rate} name="" id="" onChange={(e) => setRate(e.target.value)}>
                                     <option value="">Select Appropriate Option</option>
                                     <option value="Very Bad">Very Bad</option>
