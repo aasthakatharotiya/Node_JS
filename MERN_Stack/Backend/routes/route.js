@@ -11,6 +11,8 @@ route.get("/ViewAdminRegister", ctl.ViewAdminRegister)
 route.post("/AdminLogin", ctl.AdminLogin)
 route.get("/ViewAdminUser", auth, ctl.ViewAdminUser)
 
+route.post("/AdminRegisterUpdate", multer, ctl.AdminRegisterUpdate)
+
 // Manager Register-Login 
 
 route.post("/ManagerRegister", multer, ctl.ManagerRegister)
@@ -18,12 +20,17 @@ route.get("/ViewManagerRegister", ctl.ViewManagerRegister)
 route.post("/ManagerLogin", ctl.ManagerLogin)
 route.get("/ViewManagerUser", auth, ctl.ViewManagerUser)
 
+route.post("/ManagerRegisterUpdate", multer, ctl.ManagerRegisterUpdate)
+
 // Employee Register-Login 
 
 route.post("/EmployeeRegister", multer, ctl.EmployeeRegister)
 route.get("/ViewEmployeeRegister", ctl.ViewEmployeeRegister)
 route.post("/EmployeeLogin", ctl.EmployeeLogin)
 route.get("/ViewEmployeeUser", auth, ctl.ViewEmployeeUser)
+
+route.post("/EmployeeRegisterUpdate", multer, ctl.EmployeeRegisterUpdate)
+
 
 
 // Route to mark attendance

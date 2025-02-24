@@ -79,6 +79,29 @@ module.exports.ViewAdminUser = async (req, res) => {
 
 
 
+module.exports.AdminRegisterUpdate = async (req, res) => {
+    let singleData = await admin_schema.findById(req.body.id)
+    let image = singleData.img
+
+    if (req.file) {
+        let oldImagePath = path.join(__dirname, "../uploads", singleData.img)
+
+        if (fs.existsSync(oldImagePath)) {
+            fs.unlinkSync(oldImagePath)
+        }
+
+        image = req.file.filename
+    }
+
+    req.body.img = image
+
+    await admin_schema.findByIdAndUpdate(req.body.id, req.body)
+        .then(() => {
+            res.status(200).json({ "msg": "Admin Update Successfully" })
+        })
+}
+
+
 // Manager Register-Login 
 
 module.exports.ManagerRegister = async (req, res) => {
@@ -89,7 +112,7 @@ module.exports.ManagerRegister = async (req, res) => {
 
     req.body.img = req.file.filename
     req.body.password = await bcrypt.hash(req.body.password, 10)
-    
+
     let newManager = await manager_schema.create(req.body)
     let token = jwt.sign({ adminData: newManager }, "rnw", { expiresIn: "1h" })
 
@@ -122,8 +145,8 @@ module.exports.ManagerLogin = async (req, res) => {
 
     if (await bcrypt.compare(req.body.password, manager.password)) {
         let token = jwt.sign({ adminData: manager }, "rnw", { expiresIn: "1h" })
-        res.status(200).json({ 
-            msg: "Manager Logged in !", 
+        res.status(200).json({
+            msg: "Manager Logged in !",
             token,
             manager: {
                 id: manager._id,
@@ -146,6 +169,29 @@ module.exports.ViewManagerUser = async (req, res) => {
     await manager_schema.find({})
         .then((data) => {
             res.status(200).json({ data: data })
+        })
+}
+
+
+module.exports.ManagerRegisterUpdate = async (req, res) => {
+    let singleData = await manager_schema.findById(req.body.id)
+    let image = singleData.img
+
+    if (req.file) {
+        let oldImagePath = path.join(__dirname, "../uploads", singleData.img)
+
+        if (fs.existsSync(oldImagePath)) {
+            fs.unlinkSync(oldImagePath)
+        }
+
+        image = req.file.filename
+    }
+
+    req.body.img = image
+
+    await manager_schema.findByIdAndUpdate(req.body.id, req.body)
+        .then(() => {
+            res.status(200).json({ "msg": "Admin Update Successfully" })
         })
 }
 
@@ -195,9 +241,9 @@ module.exports.EmployeeLogin = async (req, res) => {
 
     if (await bcrypt.compare(req.body.password, emp.password)) {
         let token = jwt.sign({ adminData: emp }, "rnw", { expiresIn: "1h" })
-        res.status(200).json({ 
-            msg: "Employee Logged in !", 
-            token, 
+        res.status(200).json({
+            msg: "Employee Logged in !",
+            token,
             employee: {
                 id: emp._id,
                 name: emp.name,
@@ -222,6 +268,28 @@ module.exports.ViewEmployeeUser = async (req, res) => {
         })
 }
 
+
+module.exports.EmployeeRegisterUpdate = async (req, res) => {
+    let singleData = await employee_schema.findById(req.body.id)
+    let image = singleData.img
+
+    if (req.file) {
+        let oldImagePath = path.join(__dirname, "../uploads", singleData.img)
+
+        if (fs.existsSync(oldImagePath)) {
+            fs.unlinkSync(oldImagePath)
+        }
+
+        image = req.file.filename
+    }
+
+    req.body.img = image
+
+    await employee_schema.findByIdAndUpdate(req.body.id, req.body)
+        .then(() => {
+            res.status(200).json({ "msg": "Admin Update Successfully" })
+        })
+}
 
 
 

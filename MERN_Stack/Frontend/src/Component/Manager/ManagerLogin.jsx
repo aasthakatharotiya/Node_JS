@@ -27,8 +27,9 @@ export default function ManagerLogin() {
     alert("Login Successful!")
 
     if (response.data.token) {
-      localStorage.setItem("adminToken", response.data.token)
-      navigate('/ManagerDashboard')
+      localStorage.setItem("managerToken", response.data.token)
+      localStorage.setItem("managerData", JSON.stringify(response.data.manager))
+      navigate('/EmployeeDashboard')
     } 
     else {
       alert(response.data.msg)

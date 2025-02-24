@@ -1,46 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react'
+import HRSideBar from './HRSideBar'
+import HRHeader from './HRHeader'
+import HRProfile from './HRProfile'
+import HRSalary from './HRSalary'
+import HRAttendance from './HRAttendance'
+import Dashboard from './Dashboard'
+import DailyReport from './DailyReport'
+import MonthlyReport from './MonthlyReport'
+import Manager from './Manager'
+import YearlyReport from './YearlyReport'
 
 export default function ManagerDashboard() {
-
-  const navigate = useNavigate()
-  const [manager, setManager] = useState(null)
-
-  useEffect(() => {
-    const token = localStorage.getItem("managerToken")
-    const managerData = localStorage.getItem("managerData")
-
-    if (!token) {
-      navigate('/')
-    }
-    else if (managerData) {
-      setManager(JSON.parse(managerData))
-    }
-  }, [])
-  
-  const handleLogout = () => {
-    localStorage.removeItem("managerToken")
-    localStorage.removeItem("managerData")
-    navigate('/')
-  }
+  const [activeSection, setActiveSection] = useState('dashboard')
 
   return (
-    <div>
-      <div className="profile">
-        <button onClick={handleLogout}>Logout</button>
-
-        {manager ? (
-          <div className='profile_flex'>
-            <button>
-              <img src={`http://localhost:2006/uploads/${manager.img}`} alt="" />
-            </button>
-            <h3>{manager.name}</h3>
-          </div>
-        ) : (
-          <h1>Loading...</h1>
-        )}
+    <div className="admin_dashboard">
+      <div className="admin_sidebar">
+        <HRSideBar setActiveSection={setActiveSection} activeSection={activeSection} />
       </div>
+
+      <div className="admin_main_div">
+        <div className="admin_header">
+          <HRHeader setActiveSection={setActiveSection} />
+        </div>
+
+        <div className="admin_page">
+          {activeSection === 'dashboard' && <Dashboard/>}
+          {activeSection === 'manager' && <Manager/>}
+          {activeSection === 'attendance' && <HRAttendance/>}
+          {activeSection === 'salary' && <HRSalary/>}
+          {activeSection === 'Daily_reports' && <DailyReport/>}
+          {activeSection === 'Monthly_reports' && <MonthlyReport/>}
+          {activeSection === 'Yearly_reports' && <YearlyReport/>}
+          {activeSection === 'Profile' && <HRProfile/>}
+        </div>
+      </div>
+
     </div>
   )
 }

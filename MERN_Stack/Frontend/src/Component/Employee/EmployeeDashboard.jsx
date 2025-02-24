@@ -1,46 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react'
+import Dashboard from './Dashboard'
+import EmployeeSideBar from './EmployeeSideBar'
+import EmployeeHeader from './EmployeeHeader'
+import EmployeeProfile from './EmployeeProfile'
+import EmpAttendance from './EmpAttendance'
+import DailyReport from './DailyReport'
+import MonthlyReport from './MonthlyReport'
+import YearlyReport from './YearlyReport'
+import EmpSalary from './EmpSalary'
+import Employee from './Employee'
 
 export default function EmployeeDashboard() {
-
-  const navigate = useNavigate()
-  const [emp, setEmp] = useState(null)
-
-  useEffect(() => {
-    const token = localStorage.getItem("empToken")
-    const empData = localStorage.getItem("empData")
-
-    if (!token) {
-      navigate('/')
-    }
-    else if (empData) {
-      setEmp(JSON.parse(empData))
-    }
-  }, [])
-  
-  const handleLogout = () => {
-    localStorage.removeItem("empToken")
-    localStorage.removeItem("empData")
-    navigate('/')
-  }
+  const [activeSection, setActiveSection] = useState('dashboard')
 
   return (
-    <div>
-      <div className="profile">
-        <button onClick={handleLogout}>Logout</button>
-
-        {emp ? (
-          <div className='profile_flex'>
-            <button>
-              <img src={`http://localhost:2006/uploads/${emp.img}`} alt="" />
-            </button>
-            <h3>{emp.name}</h3>
-          </div>
-        ) : (
-          <h1>Loading...</h1>
-        )}
+    <div className="admin_dashboard">
+      <div className="admin_sidebar">
+        <EmployeeSideBar setActiveSection={setActiveSection} activeSection={activeSection} />
       </div>
+
+      <div className="admin_main_div">
+        <div className="admin_header">
+          <EmployeeHeader setActiveSection={setActiveSection} />
+        </div>
+
+        <div className="admin_page">
+          {activeSection === 'dashboard' && <Dashboard/>}
+          {activeSection === 'employee' && <Employee/>}
+          {activeSection === 'attendance' && <EmpAttendance/>}
+          {activeSection === 'salary' && <EmpSalary/>}
+          {activeSection === 'Daily_reports' && <DailyReport/>}
+          {activeSection === 'Monthly_reports' && <MonthlyReport/>}
+          {activeSection === 'Yearly_reports' && <YearlyReport/>}
+          {activeSection === 'Profile' && <EmployeeProfile />}
+        </div>
+      </div>
+
     </div>
   )
 }
