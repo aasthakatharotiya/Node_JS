@@ -17,7 +17,7 @@ export default function RecipeDashboard() {
     }, [])
 
     const fetchApi = async () => {
-        let response = await axios.get("http://localhost:2006/viewRecipe")
+        let response = await axios.get("http://localhost:2006/recipe/viewRecipe")
         console.log(response.data)
         setRecord(response.data.data)
     }
@@ -42,11 +42,11 @@ export default function RecipeDashboard() {
     
         if (editIndex) {
             formData.append("id", editIndex)
-            await axios.put("http://localhost:2006/updateRecipe", formData, {
+            await axios.put("http://localhost:2006/recipe/updateRecipe", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             })
         } else {
-            await axios.post("http://localhost:2006/addRecipe", formData, {
+            await axios.post("http://localhost:2006/recipe/addRecipe", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             })
         }
@@ -69,7 +69,7 @@ export default function RecipeDashboard() {
     }
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:2006/deleteRecipe?id=${id}`)
+        await axios.delete(`http://localhost:2006/recipe/deleteRecipe?id=${id}`)
         setRecord(record.filter(item => item._id !== id))
     }
 
@@ -170,14 +170,14 @@ export default function RecipeDashboard() {
                                             </div>
                                             <div className="task_text">
                                                 <h1>{e.name}</h1>
-                                                <h3>{e.price}</h3>
-                                                <span>{e.rate}</span>
+                                                <h3>₹ {e.price}</h3>
+                                                <span>{e.rate} Review</span>
                                             </div>
                                         </div>
                                         <br />
                                         <button className='edit_btn' onClick={() => handleEdit(e._id)}>Edit</button>
                                         <button className='delete_btn' onClick={() => handleDelete(e._id)}>Delete</button>
-                                        <button className='comp_btn' onClick={() => handleComplete(e._id)}>{e.status === "Pending" ? "Complete" : "Pending"}</button>
+                                        <button className='comp_btn' onClick={() => handleComplete(e._id)}>{e.status === "On The Way" ? "Complete" : "On The Way"}</button>
                                     </div>
                                 </div>
                             })
